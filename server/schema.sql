@@ -4,7 +4,7 @@ USE chat;
 CREATE TABLE messages (
   id MEDIUMINT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (id),
-  createdAt timestamp(255),
+  createdAt timestamp(6),
   message varchar(255),
   user MEDIUMINT NOT NULL AUTO_INCREMENT REFERENCES users(id),
   room MEDIUMINT NOT NULL AUTO_INCREMENT REFERENCES rooms(id),
