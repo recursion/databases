@@ -6,8 +6,8 @@ CREATE TABLE messages (
   PRIMARY KEY (id),
   createdAt timestamp(6),
   message varchar(255),
-  user MEDIUMINT NOT NULL AUTO_INCREMENT REFERENCES users(id),
-  room MEDIUMINT NOT NULL AUTO_INCREMENT REFERENCES rooms(id),
+  user MEDIUMINT NOT NULL REFERENCES users(id),
+  room MEDIUMINT NOT NULL REFERENCES rooms(id)
 );
 
 CREATE TABLE users (
@@ -19,7 +19,7 @@ CREATE TABLE users (
 CREATE TABLE rooms (
   id MEDIUMINT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (id),
-  name varchar(100)s
+  name varchar(100)
 );
 /* Create other tables and define schemas for them here! */
 
