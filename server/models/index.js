@@ -17,14 +17,21 @@ module.exports = {
           throw err;
         }
         console.log(rows);
+        // return retrieved data
       });
 
-      // return retrieved data
-
     },
-    post: function () {
+    // takes a message object with roomname, username, message
+    post: function (messageObj) {
       // a function which can be used to insert a message into the database
-      // insert a message to the db
+
+      // construct a query string that inserts the message data into the db
+      db.connection.query('insert into messages (message, room, user) values (messageObj.message, messageObj.room, messageObj.user);', function(err, rows) {
+        if (err) {
+          throw err;
+        }
+        console.log(rows);
+      });
     }
   },
 

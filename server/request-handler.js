@@ -15,6 +15,14 @@ var returnMessages = function(request, response, roomname) {
   response.end(JSON.stringify(results));
 };
 
+exports.sendResponse = function(request, response, content) {
+  var results = {};
+  content = content || null;
+  constructHeader(response);
+  results.results = content;
+  response.end(JSON.stringify(results));
+};
+
 var getMessagesByRoom = function(roomname) {
   var roomMessages = [];
   for (var i =0; i < messages.length; i++){
@@ -26,19 +34,15 @@ var getMessagesByRoom = function(roomname) {
 };
 
 // Gather POST data and pass it to messageBuilder
-var postBuilder = function(request, response, roomname) {
-  roomname = roomname || '';
-  constructHeader(response, 201);
+var gatherPostData = function(request, response) {
   var body = '';
   request.on('data', function(chunk){
     body += chunk.toString();
   });
   request.on('end', function() {
     var postObj = JSON.parse(body);
-    postObj.roomname = roomname;
     messageBuilder(postObj);
   });
-  response.end();
 };
 
 //takes passed in object parameters and builds an object with
@@ -73,4 +77,4 @@ var defaultCorsHeaders = {
 
 /// EXPORTS
 exports.returnMessages = returnMessages;
-exports.postBuilder = postBuilder;
+exports.gatherPostData = gatherPostData;
