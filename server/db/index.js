@@ -5,9 +5,11 @@ var mysql = require('mysql');
 // and to the database "chat".
 
 // create a database connection
+// how to select the DB we want???????
 exports.connection = mysql.createConnection({
   host     : '127.0.0.1',
   user     : 'root',
+  database : 'chat',
   password : ''
 });
 
