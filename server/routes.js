@@ -6,6 +6,5 @@ for (var route in controllers) {
     .get(controllers[route].get)
     .post(controllers[route].post);
 }
-
+// if request.method === 'GET' {}
 module.exports = router;
-
