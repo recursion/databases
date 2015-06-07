@@ -9,7 +9,7 @@ module.exports = {
       // a function which handles a get request for all messages
 
       // retrieve messages from the model
-      models.messages.get();
+      models.messages.get();s
       utils.sendResponse(req, res);
     },
     post: function (req, res) {
